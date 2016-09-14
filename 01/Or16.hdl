@@ -29,6 +29,40 @@ CHIP Or16 {
     Nand(a=a[13], b=a[13], out=out113);
     Nand(a=a[14], b=a[14], out=out114);
     Nand(a=a[15], b=a[15], out=out115);
+    
+    Nand(a=b[0], b=b[0], out=out20);
+    Nand(a=b[1], b=b[1], out=out21);
+    Nand(a=b[2], b=b[2], out=out22);
+    Nand(a=b[3], b=b[3], out=out23);
+    Nand(a=b[4], b=b[4], out=out24);
+    Nand(a=b[5], b=b[5], out=out25);
+    Nand(a=b[6], b=b[6], out=out26);
+    Nand(a=b[7], b=b[7], out=out27);
+    Nand(a=b[8], b=b[8], out=out28);
+    Nand(a=b[9], b=b[9], out=out29);
+    Nand(a=b[10], b=b[10], out=out210);
+    Nand(a=b[11], b=b[11], out=out211);
+    Nand(a=b[12], b=b[12], out=out212);
+    Nand(a=b[13], b=b[13], out=out213);
+    Nand(a=b[14], b=b[14], out=out214);
+    Nand(a=b[15], b=b[15], out=out215);
+    
+    Nand(a=out10, b=out20, out=out[0]);
+    Nand(a=out11, b=out21, out=out[1]);
+    Nand(a=out12, b=out22, out=out[2]);
+    Nand(a=out13, b=out23, out=out[3]);
+    Nand(a=out14, b=out24, out=out[4]);
+    Nand(a=out15, b=out25, out=out[5]);
+    Nand(a=out16, b=out26, out=out[6]);
+    Nand(a=out17, b=out27, out=out[7]);
+    Nand(a=out18, b=out28, out=out[8]);
+    Nand(a=out19, b=out29, out=out[9]);
+    Nand(a=out110, b=out210, out=out[10]);
+    Nand(a=out111, b=out211, out=out[11]);
+    Nand(a=out112, b=out212, out=out[12]);
+    Nand(a=out113, b=out213, out=out[13]);
+    Nand(a=out114, b=out214, out=out[14]);
+    Nand(a=out115, b=out215, out=out[15]);
 
 
     //Nand(a=b, b=b, out=out2);
