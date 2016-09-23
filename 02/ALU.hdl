@@ -42,7 +42,41 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-    Not(a=zx, out=nzx);
-    And(a=x, b=nzx, out=out);
     
+    // x = 0
+    And16(a=x, b[0]=false, b[2]=false, b[3]=false, b[4]=false, b[5]=false, b[6]=false, b[7]=false, b[8]=false, b[9]=false, b[10]=false, b[11]=false, b[12]=false, b[13]=false, b[14]=false, b[15]=false, out=out1);
+    
+    // x = !x
+    Not16(in=x, out=out2);
+    
+    // y = 0
+    And16(a=y, b[0]=false, b[2]=false, b[3]=false, b[4]=false, b[5]=false, b[6]=false, b[7]=false, b[8]=false, b[9]=false, b[10]=false, b[11]=false, b[12]=false, b[13]=false, b[14]=false, b[15]=false, out=out3);
+    
+    // y = !y
+    Not16(in=y, out=out4);
+    
+    // x + y
+    Add16(a=x, b=y, out=out5);
+    
+    // x & y
+    And16(a=x, b=y, out=out6);
+    
+    
+    // Collecting the flags
+    
+    Not(in=f, out=f1);
+    
+    Or16(a[0]=false, a[1]=false, a[2]=false, a[3]=false, a[4]=false, a[5]=false, a[6]=false, a[7]=false, a[8]=false, a[9]=false, a[10]=false, a[11]=false, a[12]=false, a[13]=false, a[14]=false, a[15]=false, b[0]=zx, b[1]=nx, b[2]=zy, b[3]=ny, b[4]=f, b[5]=f1, out[0..2]=selx);
+    
+    Mux8Way16(a=out1, b=out2, c=out3, d=out4, e=out5, f=out6, sel=selx, out=outf);
+    
+    // !out
+    Not16(in=outf, out=outfn);    
+    Mux16(a=outf, b=outfn, sel=no, out=out);
+    
+    // if (out == 0) set zr = 1
+    //And16(a=outf, b=true, out[0]=zr);
+    //Not(in=zr, out=zr);
+    // if (out < 0) set ng = 1
+    //And(a=outf[15], b=true, out=ng);
 }
