@@ -68,6 +68,8 @@ CHIP ALU {
     
     Or16(a[0]=false, a[1]=false, a[2]=false, a[3]=false, a[4]=false, a[5]=false, a[6]=false, a[7]=false, a[8]=false, a[9]=false, a[10]=false, a[11]=false, a[12]=false, a[13]=false, a[14]=false, a[15]=false, b[0]=zx, b[1]=nx, b[2]=zy, b[3]=ny, b[4]=f, b[5]=f1, out[0..2]=selx);
     
+    
+
     Mux8Way16(a=out1, b=out2, c=out3, d=out4, e=out5, f=out6, sel=selx, out=outf);
     
     // !out
@@ -75,8 +77,8 @@ CHIP ALU {
     Mux16(a=outf, b=outfn, sel=no, out=out);
     
     // if (out == 0) set zr = 1
-    //And16(a=outf, b=true, out[0]=zr);
-    //Not(in=zr, out=zr);
+    And16(a=outf, b[0]=true, b[1]=true, b[2]=true, b[3]=true, b[4]=true, b[5]=true, b[6]=true, b[7]=true, b[8]=true, b[9]=true, b[10]=true, b[11]=true, b[12]=true, b[13]=true, b[14]=true, b[15]=true, out[0]=zro);
+    Not(in=zro, out=zr);
     // if (out < 0) set ng = 1
     //And(a=outf[15], b=true, out=ng);
 }
