@@ -79,11 +79,12 @@ CHIP ALU {
     // if (out == 0) set zr = 1
     //And16(a=outf, b[0]=true, b[1]=true, b[2]=true, b[3]=true, b[4]=true, b[5]=true, b[6]=true, b[7]=true, b[8]=true, b[9]=true, b[10]=true, b[11]=true, b[12]=true, b[13]=true, b[14]=true, b[15]=true, out[0]=zro);
     //Not(in=zro, out=zr);
-    Not16(in=outf, out=noutf);
-    Inc16(in=noutf, out=inoutf);
-    Not16(in=inoutf, out=ninoutf);
-    And16(a=ninoutf, b[0]=true, b[1]=true, b[2]=true, b[3]=true, b[4]=true, b[5]=true, b[6]=true, b[7]=true, b[8]=true, b[9]=true, b[10]=true, b[11]=true, b[12]=true, b[13]=true, b[14]=true, b[15]=true, out[15]=zr);
-    
+    //Not16(in=outf, out=noutf);
+    //Mux(a=false, b=true, sel=, out=zr);
+    //Inc16(in=noutf, out=inoutf);
+    //Not16(in=inoutf, out=ninoutf);
+    //And16(a=ninoutf, b[0]=true, b[1]=true, b[2]=true, b[3]=true, b[4]=true, b[5]=true, b[6]=true, b[7]=true, b[8]=true, b[9]=true, b[10]=true, b[11]=true, b[12]=true, b[13]=true, b[14]=true, b[15]=true, out[15]=zr);
+
     
     // if (out < 0) set ng = 1
     And16(a=outf, b[0]=true, b[1]=true, b[2]=true, b[3]=true, b[4]=true, b[5]=true, b[6]=true, b[7]=true, b[8]=true, b[9]=true, b[10]=true, b[11]=true, b[12]=true, b[13]=true, b[14]=true, b[15]=true, out[15]=ng);
