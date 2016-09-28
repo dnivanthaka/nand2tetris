@@ -45,35 +45,31 @@ CHIP ALU {
     
     // x = 0
     And16(a=x, b=false, out=out1);
+    Mux16(a=x, b=out1, sel=zx, out=out11);
     
     // x = !x
-    Not16(in=x, out=out2);
+    Not16(in=out11, out=out2);
+    Mux16(a=out11, b=out2, sel=nx, out=out22);
     
     // y = 0
     And16(a=y, b=false, out=out3);
+    Mux16(a=y, b=out3, sel=zy, out=out33);
     
     // y = !y
-    Not16(in=y, out=out4);
+    Not16(in=out33, out=out4);
+    Mux16(a=out33, b=out4, sel=ny, out=out44);
     
     // x + y
-    Add16(a=x, b=y, out=out5);
+    Add16(a=out22, b=out44, out=out5);
     
     // x & y
-    And16(a=x, b=y, out=out6);
+    And16(a=out22, b=out44, out=out6);
+    Mux16(a=out6, b=out5, sel=f, out=out66);
     
-    
-    // Collecting the flags
-    
-    Not(in=f, out=f1);
-    
-    Or16(a=false, b[0]=zx, b[1]=nx, b[2]=zy, b[3]=ny, b[4]=f, b[5]=f1, out[0..2]=selx);
-    
-
-    Mux8Way16(a=out1, b=out2, c=out3, d=out4, e=out5, f=out6, sel=selx, out=outf);
     
     // !out
-    Not16(in=outf, out=outfn);    
-    Mux16(a=outf, b=outfn, sel=no, out=out, out[0..7]=out8fn1, out[8..15]=out8fn2, out=preout);
+    Not16(in=out66, out=outfn);    
+    Mux16(a=out66, b=outfn, sel=no, out=out, out[0..7]=out8fn1, out[8..15]=out8fn2, out=preout);
     
     // if (out == 0) set zr = 1
     Or8Way(in=out8fn1, out=zrout1);
