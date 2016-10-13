@@ -9,3 +9,9 @@
 // program clears the screen, i.e. writes "white" in every pixel.
 
 // Put your code here.
+// Pseudocode
+// IF TRUE
+//  IF KDB = 0
+//	scrclear()
+//  ELSE
+//      scrfill()
