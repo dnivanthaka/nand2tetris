@@ -10,8 +10,22 @@
 
 // Put your code here.
 // Pseudocode
-// IF TRUE
+// SCREEN_WIDTH
+// SCREEN_HEIGHT
+// MEMCOLS = 32
+// MEMROWS = (SCREEN_WIDTH * SCREEN_HEIGHT) / 32
+//
+// WHILE TRUE
 //  IF KDB = 0
-//	scrclear()
+//	i = 0
+//	for i < MEMROWS
+//		j = 1
+//		for j <= MEMCOLS
+//			(SCREEN * i) + j = 0
+//		
 //  ELSE
-//      scrfill()
+//      i = 0
+//	for i < MEMROWS
+//		j = 1
+//		for j <= MEMCOLS
+//			(SCREEN * i) + j = 1
