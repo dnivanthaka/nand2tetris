@@ -29,3 +29,24 @@
 //		j = 1
 //		for j <= MEMCOLS
 //			(SCREEN * i) + j = 1
+//@screen //A=SCREEN
+//M=4
+//@i      //i = 1
+//M=1
+//@SCREEN
+//M=1
+@row
+M=1     // row=1
+@col
+M=1     // col=1
+@idx
+M=0
+
+@row
+D=M
+D=D+1
+M=D
+
+(END)
+@END
+0;JMP
