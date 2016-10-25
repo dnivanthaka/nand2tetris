@@ -36,16 +36,36 @@
 //@SCREEN
 //M=1
 @row
-M=1     // row=1
-@col
-M=1     // col=1
-@idx
+M=0     // row=1
+D=M
+@seg
 M=0
 
-@row
-D=M
+(LOOP)
 D=D+1
+@row
 M=D
+@255
+D=A
+@seg
+D=M
+@SCREEN
+A=A+D
+M=D
+@seg
+M+1=M+1
+//@col
+//M=1     // col=1
+//@idx
+//M=0
+
+//@row
+//D=M
+//D=D+1
+//M=D
+
+@LOOP
+0;JMP
 
 (END)
 @END
